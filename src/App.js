@@ -1,4 +1,5 @@
 import { Fragment, useState } from "react";
+import { v4 as uuidv4 } from 'uuid'
 import Header from "./components/Header";
 import TicketList from "./components/TicketList";
 import FeedbackData from "./data/Feedbackata";
@@ -13,13 +14,17 @@ function App() {
       }
       
     }
+    const addTicket = (newTicket) => {
+      newTicket.id = uuidv4()
+      setTicket([newTicket, ...ticket ])
+    }
 
   return (
     <Fragment>
       <Header />
       <div className="container">
         <h1>Hellow</h1>
-        <TicketForm />
+        <TicketForm handleAdd={addTicket} />
         <TicketStats ticket={ticket} />
         <TicketList ticket={ticket} handleDelete={deleteTicket} />
       </div>
