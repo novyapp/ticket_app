@@ -11,7 +11,7 @@ const FeedbackData = [
       },
       {
         "text": "This is feedback item 3 coming from the backend",
-        "rating": 10,
+        "rating": 9,
         "id": 3
       }
 ]
