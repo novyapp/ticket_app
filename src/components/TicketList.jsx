@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import TicketItem from "./TicketItem";
-import propTypes from "prop-types";
 import { motion, AnimatePresence } from "framer-motion";
+import TicketContext from "../contex/TicketContex";
 
-export default function TicketList({ ticket, handleDelete }) {
+export default function TicketList() {
+  const { ticket } = useContext(TicketContext);
+
   console.log(ticket);
   if (!ticket || ticket.length === 0) {
     return <p>No Tickets yet</p>;
@@ -19,7 +21,7 @@ export default function TicketList({ ticket, handleDelete }) {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
           >
-            <TicketItem key={item.id} item={item} handleDelete={handleDelete} />
+            <TicketItem key={item.id} item={item} />
           </motion.div>
         ))}
       </AnimatePresence>
@@ -38,12 +40,3 @@ export default function TicketList({ ticket, handleDelete }) {
   // );
 }
 
-TicketList.propTypes = {
-  ticket: propTypes.arrayOf(
-    propTypes.shape({
-      id: propTypes.number.isRequired,
-      text: propTypes.string.isRequired,
-      rating: propTypes.number.isRequired,
-    })
-  ),
-};
