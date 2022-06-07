@@ -1,0 +1,19 @@
+{
+  "ticket": [
+    {
+      "id": 1,
+      "rating": 10,
+      "text": "This is rating from db 1"
+    },
+    {
+      "text": "This is rating from db 2444",
+      "rating": 4,
+      "id": 2
+    },
+    {
+      "id": 3,
+      "rating": 1,
+      "text": "This is rating from db 3"
+    }
+  ]
+}

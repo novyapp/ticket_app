@@ -2,16 +2,18 @@ import React, { useContext } from "react";
 import TicketItem from "./TicketItem";
 import { motion, AnimatePresence } from "framer-motion";
 import TicketContext from "../contex/TicketContex";
+import Spinner from "./shared/Spinner";
 
 export default function TicketList() {
-  const { ticket } = useContext(TicketContext);
+  const { ticket, isLoading } = useContext(TicketContext);
 
   console.log(ticket);
-  if (!ticket || ticket.length === 0) {
+  if (!isLoading && (!ticket || ticket.length === 0)) {
     return <p>No Tickets yet</p>;
   }
-
-  return (
+  return isLoading ? (
+    <Spinner />
+  ) : (
     <div className="feedback-list">
       <AnimatePresence>
         {ticket.map((item) => (
@@ -27,6 +29,7 @@ export default function TicketList() {
       </AnimatePresence>
     </div>
   );
+
   // return (
   //   <div className="feedback-list">
   //     {ticket.map((item) => (
@@ -39,4 +42,3 @@ export default function TicketList() {
   //   </div>
   // );
 }
-
